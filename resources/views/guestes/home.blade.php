@@ -5,5 +5,7 @@
 @endsection
 
 @section('content')
-    Questo è la guest home
+    <div id="app">
+
+    </div>
 @endsection
