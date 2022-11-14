@@ -21,6 +21,10 @@ Route::middleware('auth')->namespace('Admin')->name('admin.')->prefix('admin')->
     Route::resource('posts', 'PostsController');
 });
 
+Route::get('/', function () {
+    return view('guestes.home');
+})->name('guestHome');
+
 Route::get('{any?}', function () {
     return view('guestes.home');
 })->where('any', '.*');
