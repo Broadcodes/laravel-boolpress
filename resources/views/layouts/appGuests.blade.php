@@ -11,7 +11,7 @@
    <link rel="shortcut icon" href="" type="image/x-icon">
    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
-   <script type="text/javascript" src="{{ asset('js/app.js') }}" defer></script>
+   <script type="text/javascript" src="{{ asset('js/front.js') }}" defer></script>
 </head>
 <body>
     @yield('content')
