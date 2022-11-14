@@ -24,3 +24,6 @@ Route::middleware('auth')->namespace('admin')->name('admin')->prefix('admin')->g
     Route::get('/', 'HomeController@index')->name('home');
 });
 
+Route::get('{any?}', function () {
+    return view('guestes.home');
+})->where('any', '.*');
