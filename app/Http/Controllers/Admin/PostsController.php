@@ -23,6 +23,15 @@ class PostsController extends Controller
 
     public function store(Request $request)
     {
+
+        $request->validate([
+            'title' => 'required | max:200',
+            'description' => 'required'
+        ], [
+            'required' => 'Il campo è obbligatorio',
+            'max' => 'Puoi inserire fino ad un massimo di :max caratteri'
+        ]);
+
         $postForm = $request->all();
         $post = new Post();
         $post->fill($postForm);
@@ -54,6 +63,14 @@ class PostsController extends Controller
 
     public function update(Request $request, Post $post)
     {
+        $request->validate([
+            'title' => 'required | max:200',
+            'description' => 'required'
+        ], [
+            'required' => 'Il campo è obbligatorio',
+            'max' => 'Puoi inserire fino ad un massimo di :max caratteri'
+        ]);
+
         $dataForm = $request->all();
 
         if ($post->title != $dataForm['title']) {
