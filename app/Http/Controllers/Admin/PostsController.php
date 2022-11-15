@@ -62,7 +62,8 @@ class PostsController extends Controller
 
     public function edit(Post $post)
     {
-        return view('admin.posts.edit', compact('post'));
+        $categories = Category::all();
+        return view('admin.posts.edit', compact(['post', 'categories']));
     }
 
     public function update(Request $request, Post $post)
@@ -92,6 +93,9 @@ class PostsController extends Controller
 
             $dataForm['slag'] = $slug;
         }
+
+        $post['category_id'] = $dataForm['categories'];
+
         $post->update($dataForm);
 
         return redirect()->route('admin.posts.show', $post->id);
