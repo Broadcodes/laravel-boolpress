@@ -49821,8 +49821,8 @@ var app = new Vue({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Gianluca Fabrizio\Desktop\Boolean\1 - Esercizi\51_laravel-auth\resources\js\front.js */"./resources/js/front.js");
-module.exports = __webpack_require__(/*! C:\Users\Gianluca Fabrizio\Desktop\Boolean\1 - Esercizi\51_laravel-auth\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\Gianluca Fabrizio\Desktop\Boolean\1 - Esercizi\52_laravel_one_to_many\resources\js\front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! C:\Users\Gianluca Fabrizio\Desktop\Boolean\1 - Esercizi\52_laravel_one_to_many\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
