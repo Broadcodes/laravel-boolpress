@@ -3,7 +3,7 @@
 @section('content')
     <div class="row">
         <div class="col-6">
-            <form action="{{ route('admin.posts.update', $posts->id) }}" method="POST">
+            <form action="{{ route('admin.posts.update', $post->id) }}" method="POST">
                 @csrf
                 @method('PUT')
                 <div class="m-2">
