@@ -26,5 +26,5 @@ Route::get('/', function () {
 })->name('guestHome');
 
 Route::get('{any?}', function () {
-    return view('guestes.home');
+    return redirect()->route('guestHome');
 })->where('any', '.*');
