@@ -28,10 +28,12 @@ class PostsController extends Controller
 
         $request->validate([
             'title' => 'required | max:200',
-            'description' => 'required'
+            'description' => 'required',
+            'category_id' => 'nullable | exists: categories, id'
         ], [
             'required' => 'Il campo è obbligatorio',
-            'max' => 'Puoi inserire fino ad un massimo di :max caratteri'
+            'max' => 'Puoi inserire fino ad un massimo di :max caratteri',
+            'category_id.exists' => 'La categoria non esiste'
         ]);
 
         $postForm = $request->all();
@@ -67,10 +69,12 @@ class PostsController extends Controller
     {
         $request->validate([
             'title' => 'required | max:200',
-            'description' => 'required'
+            'description' => 'required',
+            'category_id' => 'nullable | exists: categories, id'
         ], [
             'required' => 'Il campo è obbligatorio',
-            'max' => 'Puoi inserire fino ad un massimo di :max caratteri'
+            'max' => 'Puoi inserire fino ad un massimo di :max caratteri',
+            'category_id.exists' => 'La categoria non esiste'
         ]);
 
         $dataForm = $request->all();
