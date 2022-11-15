@@ -17,12 +17,12 @@
                     </div>
                 </div>
                 <div class="m-2 pt-3 pb-3 d-flex">
-                    <label class="mr-2" for="title">Categoria</label>
+                    <label class="mr-2" for="categories">Categoria</label>
                     <select name="categories" id="categories">
                         <option value="">Seleziona</option>
 
                         @foreach ($categories as $category)
-                            <option value="{{ $category->id }}"{{ $category_id == old('category_id', -1) ? 'selected' : ''}}>{{ $category->name }}</option>
+                            <option value="{{ $category->id }}"{{ $category->id == old('category_id', -1) ? 'selected' : ''}}>{{ $category->name }}</option>
                         @endforeach
                     </select>
                 </div>

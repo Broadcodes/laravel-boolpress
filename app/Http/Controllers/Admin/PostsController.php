@@ -37,9 +37,9 @@ class PostsController extends Controller
         ]);
 
         $postForm = $request->all();
+        $postForm['category_id'] = $request['categories'];
         $post = new Post();
         $post->fill($postForm);
-
         $slug = Str::slug($post->title);
         $slug_base = $slug;
         $counter = 1;
