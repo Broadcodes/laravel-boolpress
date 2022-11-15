@@ -15,7 +15,16 @@
                             <h5 class="text-danger ml-4">{{ $message }}</h5>
                         @enderror
                     </div>
+                </div>
+                <div class="m-2 pt-3 pb-3 d-flex">
+                    <label class="mr-2" for="title">Categoria</label>
+                    <select name="categories" id="categories">
+                        <option value="">Seleziona</option>
 
+                        @foreach ($categories as $category)
+                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                        @endforeach
+                    </select>
                 </div>
                 <div class="m-2">
                     <div class="d-flex">
