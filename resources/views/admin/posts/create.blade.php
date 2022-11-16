@@ -31,6 +31,15 @@
                         <h5 class="text-danger ml-4">{{ $message }}</h5>
                     @enderror
                 </div>
+                <div class="m-2 pt-3 pb-3">
+                    <div @error('tags') class="is-invalid" @enderror>
+                        <label>Tags:</label>
+                        @foreach ($tags as $tag)
+                            <input type="checkbox" name="tags[]" id="tags" value="{{$tag->id}}">
+                            <label for="tags">{{$tag->name}}</label>
+                        @endforeach
+                    </div>
+                </div>
                 <div class="m-2">
                     <div class="d-flex">
                         <label class="mr-2" for="description">Descrizione</label>
