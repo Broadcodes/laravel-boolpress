@@ -57,7 +57,7 @@ class PostsController extends Controller
         $post->save();
 
         if(array_key_exists('tags', $postForm)){
-            $post->tags()->sync($postForm['tags']);
+            $post->tags()->sync($postForm['tag']);
         }
 
         return redirect()->route('admin.posts.show', $post->id);
@@ -71,7 +71,8 @@ class PostsController extends Controller
     public function edit(Post $post)
     {
         $categories = Category::all();
-        return view('admin.posts.edit', compact(['post', 'categories']));
+        $tags = Tag::all();
+        return view('admin.posts.edit', compact(['post', 'categories', 'tags']));
     }
 
     public function update(Request $request, Post $post)
@@ -109,7 +110,7 @@ class PostsController extends Controller
         $post->update($postForm);
 
         if(array_key_exists('tags', $postForm)){
-            $post->tags()->sync($postForm['tags']);
+            $post->tags()->sync($postForm['tag']);
         } else {
             $post->tags()->sync([]);
         }

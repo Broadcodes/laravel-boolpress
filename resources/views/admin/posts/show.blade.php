@@ -7,18 +7,18 @@
             <h2>{{ $post->title }}</h2>
 
             @if ($post->category)
-                <p>{{ $post->category->name }}</p>
+                <p>Categoria: {{ $post->category->name }}</p>
             @else
                 <p>Nessuna categoria</p>
             @endif
 
-            <p>{{ $post->description }}</p>
+            <p>Descrizione: {{ $post->description }}</p>
 
             <div class="tags">
-                <h4>Tags:</h4>
+                <p>Tags:</p>
                 @foreach ($post->tags as $tag)
                     <div class="p-3">
-                        <h5>{{$tag->name}}</h5>
+                        <p>{{$tag->name}}</p>
                     </div>
                 @endforeach
             </div>
