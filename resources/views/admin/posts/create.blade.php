@@ -35,7 +35,7 @@
                     <div @error('tags') class="is-invalid" @enderror>
                         <label>Tags:</label>
                         @foreach ($tags as $tag)
-                            <input type="checkbox" name="tags[]" id="tags" value="{{$tag->id}}">
+                            <input {{in_array($tag->id, old('tags', [])) ? 'checked' : ''}} type="checkbox" name="tags[]" id="tags" value="{{$tag->id}}">
                             <label for="tags">{{$tag->name}}</label>
                         @endforeach
                     </div>
