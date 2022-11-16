@@ -79,16 +79,18 @@ class PostsController extends Controller
         $request->validate([
             'title' => 'required | max:200',
             'description' => 'required',
-            'category_id' => 'nullable | exists: categories, id'
+            'category_id' => 'nullable | exists: categories, id',
+            'tags' => 'exists: tags, id'
         ], [
             'required' => 'Il campo è obbligatorio',
             'max' => 'Puoi inserire fino ad un massimo di :max caratteri',
-            'category_id.exists' => 'La categoria non esiste'
+            'category_id.exists' => 'La categoria non esiste',
+            'tags.exists' => 'Il tag non esiste'
         ]);
 
-        $dataForm = $request->all();
+        $postForm = $request->all();
 
-        if ($post->title != $dataForm['title']) {
+        if ($post->title != $postForm['title']) {
             $slug = Str::slug($post->title);
             $slug_base = $slug;
             $counter = 1;
@@ -99,12 +101,18 @@ class PostsController extends Controller
                 $existingPost = Post::where('slug', $slug)->first();
             }
 
-            $dataForm['slag'] = $slug;
+            $postForm['slag'] = $slug;
         }
 
-        $post['category_id'] = $dataForm['categories'];
+        $post['category_id'] = $postForm['categories'];
 
-        $post->update($dataForm);
+        $post->update($postForm);
+
+        if(array_key_exists('tags', $postForm)){
+            $post->tags()->sync($postForm['tags']);
+        } else {
+            $post->tags()->sync([]);
+        }
 
         return redirect()->route('admin.posts.show', $post->id);
     }
