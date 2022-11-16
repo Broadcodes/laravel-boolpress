@@ -31,11 +31,13 @@ class PostsController extends Controller
         $request->validate([
             'title' => 'required | max:200',
             'description' => 'required',
-            'category_id' => 'nullable | exists: categories, id'
+            'category_id' => 'nullable | exists: categories, id',
+            'tags' => 'exists: tags, id'
         ], [
             'required' => 'Il campo è obbligatorio',
             'max' => 'Puoi inserire fino ad un massimo di :max caratteri',
-            'category_id.exists' => 'La categoria non esiste'
+            'category_id.exists' => 'La categoria non esiste',
+            'tags.exists' => 'Il tag non esiste'
         ]);
 
         $postForm = $request->all();
@@ -53,6 +55,10 @@ class PostsController extends Controller
         }
         $post->slug = $slug;
         $post->save();
+
+        if(array_key_exists('tags', $postForm)){
+            $post->tags()->sync($postForm['tags']);
+        }
 
         return redirect()->route('admin.posts.show', $post->id);
     }
