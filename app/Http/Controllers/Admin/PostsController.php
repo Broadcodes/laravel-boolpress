@@ -29,10 +29,10 @@ class PostsController extends Controller
     {
 
         $request->validate([
-            'title' => 'required | max:200',
+            'title' => 'required|max:200',
             'description' => 'required',
-            'category_id' => 'nullable | exists: categories, id',
-            'tags' => 'exists: tags, id'
+            'category_id' => 'nullable|exists:categories,id',
+            'tags' => 'exists:tags,id'
         ], [
             'required' => 'Il campo è obbligatorio',
             'max' => 'Puoi inserire fino ad un massimo di :max caratteri',
@@ -57,7 +57,7 @@ class PostsController extends Controller
         $post->save();
 
         if(array_key_exists('tags', $postForm)){
-            $post->tags()->sync($postForm['tag']);
+            $post->tags()->sync($postForm['tags']);
         }
 
         return redirect()->route('admin.posts.show', $post->id);
@@ -78,10 +78,10 @@ class PostsController extends Controller
     public function update(Request $request, Post $post)
     {
         $request->validate([
-            'title' => 'required | max:200',
+            'title' => 'required|max:200',
             'description' => 'required',
-            'category_id' => 'nullable | exists: categories, id',
-            'tags' => 'exists: tags, id'
+            'category_id' => 'nullable|exists:categories,id',
+            'tags' => 'exists:tags,id'
         ], [
             'required' => 'Il campo è obbligatorio',
             'max' => 'Puoi inserire fino ad un massimo di :max caratteri',
@@ -110,7 +110,7 @@ class PostsController extends Controller
         $post->update($postForm);
 
         if(array_key_exists('tags', $postForm)){
-            $post->tags()->sync($postForm['tag']);
+            $post->tags()->sync($postForm['tags']);
         } else {
             $post->tags()->sync([]);
         }
