@@ -20,6 +20,7 @@ Route::middleware('auth')->namespace('Admin')->name('admin.')->prefix('admin')->
     Route::get('/', 'HomeController@index')->name('home');
     Route::resource('posts', 'PostsController');
     Route::resource('users', 'UsersController');
+    Route::resource('categories', 'CategoriesController');
 });
 
 Route::get('/', function () {

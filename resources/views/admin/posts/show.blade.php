@@ -15,12 +15,13 @@
             <p>Descrizione: {{ $post->description }}</p>
 
             <div class="tags">
-                <p>Tags:</p>
-                @foreach ($post->tags as $tag)
-                    <div class="p-3">
-                        <p>{{$tag->name}}</p>
-                    </div>
-                @endforeach
+                <div class="d-flex">
+                    <p>Tags:</p>
+                    @foreach ($post->tags as $tag)
+                        <p class="mx-2">{{ $tag->name }}</p>
+                    @endforeach
+                </div>
+
             </div>
 
             <div class="d-flex">
