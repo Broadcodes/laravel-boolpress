@@ -25,7 +25,7 @@
             </div>
 
             <div class="d-flex">
-                <a href="{{ route('admin.posts.edit', $post->id) }}">Edit</a>
+                <a href="{{ route('admin.posts.edit', $post->id) }}">Modifica</a>
                 <form class="ml-2" action="{{ route('admin.posts.destroy', $post->id) }}" method="POST">
                     @csrf
                     @method('DELETE')

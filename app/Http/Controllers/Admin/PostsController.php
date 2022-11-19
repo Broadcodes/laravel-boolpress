@@ -102,10 +102,8 @@ class PostsController extends Controller
                 $existingPost = Post::where('slug', $slug)->first();
             }
 
-            $postForm['slag'] = $slug;
+            $postForm['slug'] = $slug;
         }
-
-        $post['category_id'] = $postForm['categories'];
 
         $post->update($postForm);
 
