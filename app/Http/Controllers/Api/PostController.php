@@ -40,9 +40,14 @@ class PostController extends Controller
         //
     }
 
-    public function show($id)
+    public function show(Post $post)
     {
-        //
+        $data = [
+            'results' => $post,
+            'success' => true
+        ];
+
+        return response()->json($data);
     }
 
     public function edit($id)
