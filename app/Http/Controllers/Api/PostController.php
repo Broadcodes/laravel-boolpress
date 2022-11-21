@@ -14,7 +14,7 @@ class PostController extends Controller
     {
 
         try{
-            $posts = Post::paginate(3);
+            $posts = Post::paginate(6);
 
             $data = [
                 'results' => $posts,
