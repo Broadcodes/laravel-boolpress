@@ -1,16 +1,39 @@
 <template>
     <div>
-        <PostsComponent />
+        <NavComponent :nav="nav" />
+        <router-view></router-view>
     </div>
 </template>
 
 <script>
-import PostsComponent from '../components/PostsComponent.vue';
+import NavComponent from '../components/NavComponent.vue'
 
 export default {
     name: 'App',
     components: {
-        PostsComponent
+        NavComponent
+    },
+    data() {
+        return {
+            nav: [
+                {
+                    path: '/',
+                    label: 'Home'
+                },
+                {
+                    path: '/posts',
+                    label: 'Blog'
+                },
+                {
+                    path: '/chi-siamo',
+                    label: 'Chi siamo'
+                },
+                {
+                    path: '/contatti',
+                    label: 'Contatti'
+                }
+            ]
+        }
     }
 }
 </script>
