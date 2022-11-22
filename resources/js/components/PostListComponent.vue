@@ -6,11 +6,11 @@
             </div>
 
             <div class="m-2">
-                <button :class="{ disable: currentPage === 1 }" @click="page(paginatedPosts.first_page_url)">Prima Pagina</button>
-                <button :class="{ disable: !paginatedPosts.prev_page_url }" @click="page(paginatedPosts.prev_page_url)">Indietro</button>
+                <button :class="{ disable: currentPage === 1 }" @click="page(paginatedPosts.first_page_url, 1)">Prima Pagina</button>
+                <button :class="{ disable: !paginatedPosts.prev_page_url }" @click="page(paginatedPosts.prev_page_url, currentPage - 1)">Indietro</button>
                     {{currentPage}}/{{totalPages}}
-                <button :class="{ disable: !paginatedPosts.next_page_url }" @click="page(paginatedPosts.next_page_url)">Avanti</button>
-                <button :class="{ disable: currentPage === totalPages }" @click="page(paginatedPosts.last_page_url)">Ultima Pagina</button>
+                <button :class="{ disable: !paginatedPosts.next_page_url }" @click="page(paginatedPosts.next_page_url, currentPage + 1)">Avanti</button>
+                <button :class="{ disable: currentPage === totalPages }" @click="page(paginatedPosts.last_page_url, totalPages)">Ultima Pagina</button>
             </div>
 
         </div>
@@ -21,6 +21,7 @@
 </template>
 
 <script>
+
 export default {
     name: 'PostListComponent',
     computed: {
@@ -41,8 +42,11 @@ export default {
         showPost(id){
             this.$emit('clickedPost', id)
         },
-        page(url){
-            this.$emit('requestPage', url);
+        page(url, pageNumber){
+            if(url){
+                this.$router.push({path: '/posts', query: {page: pageNumber}})
+                this.$emit('requestPage', url);
+            }
         }
     }
 }
