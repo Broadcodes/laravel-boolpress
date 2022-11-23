@@ -41,20 +41,7 @@ export default {
                 });
         },
         showPost(id) {
-            // this.loading = true;
-            // axios.get('api/posts/' + id)
-            //     .then(response => {
-            //         if (response.data.status !== 200) {
-            //             this.detail = response.data.success ? response.data.results : undefined;
-            //         }
-
-            //         this.loading = false;
-            //     })
-            //     .catch(e => {
-            //         console.log('errore: ' + e);
-            //         this.loading = false;
-            //     })
-            console.log('hai cliccato: ' + id);
+            this.$router.push('/posts/' + id);
         }
     },
     mounted() {

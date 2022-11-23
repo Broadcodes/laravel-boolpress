@@ -1,8 +1,8 @@
 <template>
-  <div>
+  <div class="mx-5">
     <div v-if="posts.length > 0">
-            <div v-for="post in posts" :key="post.id">
-                <span @click="showPost(post.id)">{{post.title}}</span>
+            <div class="my-3" v-for="post in posts" :key="post.id">
+                <span class="postList" @click="showPost(post.id)">{{post.title}}</span>
             </div>
 
             <div class="m-2">
@@ -56,5 +56,9 @@ export default {
     button.disable{
         opacity: .5;
         pointer-events: none;
+    }
+
+    .postList{
+        cursor: pointer;
     }
 </style>
