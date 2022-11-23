@@ -2,7 +2,7 @@
   <div class="mx-5">
     <div v-if="posts.length > 0">
             <div class="my-3" v-for="post in posts" :key="post.id">
-                <span class="postList" @click="showPost(post.id)">{{post.title}}</span>
+                <span class="postList" @click="showPost(post.slug)">{{post.title}}</span>
             </div>
 
             <div class="m-2">
@@ -39,8 +39,8 @@ export default {
         paginatedPosts: Object
     },
     methods:{
-        showPost(id){
-            this.$emit('clickedPost', id)
+        showPost(slug){
+            this.$emit('clickedPost', slug)
         },
         page(url, pageNumber){
             if(url){

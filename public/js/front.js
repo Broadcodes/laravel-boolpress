@@ -1980,8 +1980,8 @@ __webpack_require__.r(__webpack_exports__);
     paginatedPosts: Object
   },
   methods: {
-    showPost: function showPost(id) {
-      this.$emit('clickedPost', id);
+    showPost: function showPost(slug) {
+      this.$emit('clickedPost', slug);
     },
     page: function page(url, pageNumber) {
       if (url) {
@@ -2097,8 +2097,8 @@ __webpack_require__.r(__webpack_exports__);
         console.log(e);
       });
     },
-    showPost: function showPost(id) {
-      this.$router.push('/posts/' + id);
+    showPost: function showPost(slug) {
+      this.$router.push('/posts/' + slug);
     }
   },
   mounted: function mounted() {
@@ -2127,8 +2127,8 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   mounted: function mounted() {
-    var id = this.$route.params.id;
-    this.viewPage('/api/posts/' + id);
+    var slug = this.$route.params.slug;
+    this.viewPage('/api/posts/' + slug);
   },
   methods: {
     viewPage: function viewPage(url) {
@@ -2240,7 +2240,7 @@ var render = function render() {
       staticClass: "postList",
       on: {
         click: function click($event) {
-          return _vm.showPost(post.id);
+          return _vm.showPost(post.slug);
         }
       }
     }, [_vm._v(_vm._s(post.title))])]);
@@ -54680,7 +54680,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     name: 'posts-index',
     component: _pages_PostsIndex__WEBPACK_IMPORTED_MODULE_6__["default"]
   }, {
-    path: '/posts/:id',
+    path: '/posts/:slug',
     name: 'posts-show',
     component: _pages_PostsShow__WEBPACK_IMPORTED_MODULE_7__["default"]
   }, {

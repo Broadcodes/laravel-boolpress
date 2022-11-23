@@ -40,8 +40,8 @@ export default {
                     console.log(e);
                 });
         },
-        showPost(id) {
-            this.$router.push('/posts/' + id);
+        showPost(slug) {
+            this.$router.push('/posts/' + slug);
         }
     },
     mounted() {

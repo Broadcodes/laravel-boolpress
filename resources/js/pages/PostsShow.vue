@@ -26,8 +26,8 @@ export default {
         }
     },
     mounted() {
-        const id = this.$route.params.id;
-        this.viewPage('/api/posts/' + id);
+        const slug = this.$route.params.slug;
+        this.viewPage('/api/posts/' + slug);
     },
     methods: {
         viewPage(url) {
