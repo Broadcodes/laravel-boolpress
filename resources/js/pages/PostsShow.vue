@@ -9,7 +9,8 @@
         </div>
 
         <div>
-            <router-link :to="{name: 'posts-index'}">Torna indietro</router-link>
+            <!-- <router-link :to="{name: 'posts-index'}">Torna indietro</router-link> -->
+            <button @click="back">Torna indietro</button>
         </div>
     </div>
 </template>
@@ -21,6 +22,7 @@ export default {
         return {
             loading: true,
             post: undefined,
+            backUrl: ''
         }
     },
     mounted() {
@@ -41,6 +43,15 @@ export default {
                     console.log(e);
                 });
         },
+        back() {
+            this.$router.push(this.backUrl);
+        }
+    },
+    beforeRouteEnter(to, from, next) {
+
+        next(vueComponent => {
+            vueComponent.backUrl = from;
+        })
     }
 }
 </script>

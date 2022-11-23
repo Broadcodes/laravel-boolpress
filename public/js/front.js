@@ -2122,7 +2122,8 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       loading: true,
-      post: undefined
+      post: undefined,
+      backUrl: ''
     };
   },
   mounted: function mounted() {
@@ -2145,7 +2146,15 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function (e) {
         console.log(e);
       });
+    },
+    back: function back() {
+      this.$router.push(this.backUrl);
     }
+  },
+  beforeRouteEnter: function beforeRouteEnter(to, from, next) {
+    next(function (vueComponent) {
+      vueComponent.backUrl = from;
+    });
   }
 });
 
@@ -2419,13 +2428,11 @@ var render = function render() {
     _c = _vm._self._c;
   return _c("div", {
     staticClass: "mx-5"
-  }, [_vm.loading ? _c("div", [_c("h2", [_vm._v("Caricamento dettaglio post")])]) : _c("div", [_c("h2", [_vm._v(_vm._s(_vm.post.title))]), _vm._v(" "), _c("p", [_vm._v(_vm._s(_vm.post.description))])]), _vm._v(" "), _c("div", [_c("router-link", {
-    attrs: {
-      to: {
-        name: "posts-index"
-      }
+  }, [_vm.loading ? _c("div", [_c("h2", [_vm._v("Caricamento dettaglio post")])]) : _c("div", [_c("h2", [_vm._v(_vm._s(_vm.post.title))]), _vm._v(" "), _c("p", [_vm._v(_vm._s(_vm.post.description))])]), _vm._v(" "), _c("div", [_c("button", {
+    on: {
+      click: _vm.back
     }
-  }, [_vm._v("Torna indietro")])], 1)]);
+  }, [_vm._v("Torna indietro")])])]);
 };
 var staticRenderFns = [];
 render._withStripped = true;
